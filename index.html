@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<title>Best Offers Guarantee | yousport.com </title>
+<link rel="stylesheet" href="css/normalize.min.css">
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale-1">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,800' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"> </script>
+</head>
+<body>
+<div class="border"></div>
+<div class="wrapper" ng-controller = "MainController">
+	<header class="main_header clearfix">
+		<div class="logo">
+			<img src="images/logo.png" alt="Smile">
+			<h1>{{title}}<span>{{title2}}</span></h1>
+		</div>
+		<nav class="nav">
+			<a class="current" href="javascript:void(0)" ng-click="myFilter = ''" onClick="addClass(this)">All</a>
+			<a href="javascript:void(0)" ng-click="myFilter = {category: 'Sportbook'}" onClick="addClass(this)">Sportbooks</a>
+			<a href="javascript:void(0)" ng-click="myFilter = {category: 'HorceRacing'}" onClick="addClass(this)">HorceRacing</a>
+			<a href="javascript:void(0)" ng-click="myFilter = {category: 'Poker'}" onClick="addClass(this)">Poker</a>
+			<a href="javascript:void(0)" ng-click="myFilter = {category: 'Casino'}" onClick="addClass(this)">Casino</a>
+		</nav>
+	</header>
+	<ul id="timeline" >
+		<a href="{{ product.link }}" target="_blank" ng-repeat="product in products | filter:myFilter">
+			<li class="listing clearfix">
+				<div class="image_wrapper"><img class="twiter"src="{{product.cover}}" alt="Twitter"></div>
+				<div class="info">
+					<span class="job_title">{{product.job_title}}</span>
+					<span class="job_info">{{product.job_info}}	 <span>&bull;</span> {{product.Promocode}}  <span>&bull;</span> {{product.pubdate }} </span>
+				</div>
+				<span class="job_type {{product.job_type}}">{{product.category}}</span>
+			</li>
+		</a>
+		<!-- <li class="load_more"><button class="button" ng-click="add()">Load More</button></li> -->
+	</ul>
+</div>
+</body>
+<script src="js/app.js"></script>
+<script src="js/maincontroller.js"></script>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+function addClass(ths){
+	$(".nav a").removeClass("current");
+	$(ths).addClass("current");
+}
+</script>
+</html>
